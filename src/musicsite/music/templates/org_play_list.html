@@ -1,0 +1,9 @@
+{% if play_list %}
+    <ul>
+        {% for music in play_list %}
+            <li><a href="{% url 'music:detail' music.id %}">{{ music.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>음악이 없습니다.</p>
+{% endif %}
