@@ -118,7 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [ # 이 옵션말고 STATIC_ROOT 는 setttings.py의 DEBUG가 Ture로 설정되어 있으면 적용되지 않으며, STATIC_ROOT는 실 서비스 환경을 위한 설정 항목임.
-    BASE_DIR / 'static',
+    BASE_DIR / 'music/static',
 ]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
