@@ -10,6 +10,7 @@ class Music(models.Model):
     lyrics = models.CharField(max_length=1000, null = True) #가사
     lyricists = models.CharField(max_length=100, null = True) #작사,작곡가들
     release_date = models.DateField(null = True) #발매일
+    URL = models.CharField(max_length=100, null= True)
 
     def __str__(self):
         return self.title
