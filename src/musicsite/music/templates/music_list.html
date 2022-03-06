@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if music_list %}
+    <!-- <ul>
+        {% for music in music_list %}
+            <li><a href="{% url 'music:detail' music.id %}">{{ music.title }}</a></li>
+        {% endfor %}
+    </ul> -->
+    <div class="list-group">
+        {% for music in music_list %}
+            <a href="{% url 'music:detail' music.id %}" class="list-group-item list-group-item-action" aria-current="true">{{ music.title }}</a>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>음악이 없습니다.</p>
+{% endif %}
+
+<form action="{% url 'music:register_music' %}" method="post">
+{% csrf_token %}
+<!-- <textarea name="content" id="content" rows="15"></textarea> -->
+<input type="submit" value="음악 등록">
+</form>
+{% endblock %}
