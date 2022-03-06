@@ -5,7 +5,29 @@
     <h5 class="my-3 border-bottom pb-2">음악 등록</h5>
     <form method="post" class="post-form my-3">
         {% csrf_token %}
-        {{ form.as_p }}
+        <!-- 오류표시 -->
+        {% if form.erros %}
+            <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.erros %}
+                <strong>{{ field.label }}</strong>
+                {{ field.erros }}
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+        <!-- 오류표시End -->
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" name="title" maxlength="100" required="" id="title">
+            <br><br>
+            <label for="singer">가수</label>
+            <input type="text" name="singer" maxlength="30" required="" id="singer">
+            <br><br>
+            <label for="URL">YoutubeURL</label>
+            <input type="text" name="URL" maxlength="100" required="" id="URL">
+            <br><br>
+        </div>
         <button type="submit" class="btn btn-primary">저장하기</button>
     </form>
 </div>
