@@ -2,14 +2,15 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import MusicForm
 from .models import Music
+from .music_info import MusicInfo, musicInfoRun
 # Create your views here.
 def index(request):
     """
     음악 목록 출력
     """
-    play_list = Music.objects.order_by('-release_date')
-    context = {'play_list': play_list}
-    return render(request, 'play_list.html', context)
+    music_list = Music.objects.order_by('-release_date')
+    context = {'music_list': music_list}
+    return render(request, 'music_list.html', context)
 
 def detail(request, music_id):
     """
@@ -28,7 +29,19 @@ def register_music(request):
     if request.method == "POST":
         form = MusicForm(request.POST)
         if form.is_valid():
-            form.save()
+            #db에 넣기
+            music_title, music_singer, music_album, release_date, music_genre, music_lyrics, music_lyricists_detail = musicInfoRun(form.cleaned_data['title']+form.cleaned_data['singer'])
+            print(form.cleaned_data['title'])
+            print(form.cleaned_data['singer'])
+            Music.objects.create(title=music_title,\
+                                         singer=music_singer,\
+                                         album=music_album,\
+                                         genre=music_genre,\
+                                         lyrics=music_lyrics,\
+                                         lyricists=music_lyricists_detail,\
+                                         release_date=release_date,\
+                                         URL=form.cleaned_data['URL'],
+                                        )
             print("데이터 저장됨")
             return redirect('music:index')
     else:
