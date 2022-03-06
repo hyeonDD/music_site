@@ -9,5 +9,7 @@
 
 [Django elasticsearch 연동](https://blog.nerdfactory.ai/2019/04/29/django-elasticsearch-restframework.html)
 
+[bootstrap css 설명페이지](https://getbootstrap.com/docs/5.0/components/list-group/)
+
 ## Improve on
 1. 장고 제네릭뷰 사용하기
