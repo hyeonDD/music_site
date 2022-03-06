@@ -24,7 +24,9 @@ def musicInfoRun(search):
     tmp = tmp[benchmark+14:benchmark2] # 지점을 기준으로 짜름 (SongID가 짤려서나옴)    
 
     get_detail_URL = MusicInfo('https://www.melon.com/song/detail.htm?songId='+tmp)    
-    music_title = str(get_detail_URL.parsing('.song_name').text.split()[1:]) # 노래 이름
+    music_title = get_detail_URL.parsing('.song_name').text.split()[1:] # 노래 이름
+    music_title = ''.join(music_title)
+
     music_singer = get_detail_URL.parsing('.artist').text.strip() # 노래 가수    
     _, music_album, _ , release_date, _, music_genre, *_ = get_detail_URL.parsing('.meta').text.strip().split('\n') # 앨범, 발매일, 장르
     try :
@@ -50,9 +52,9 @@ def musicInfoRun(search):
 
 if __name__ == '__main__':  
     # a, *_ = musicInfoRun('러브블러썸 케이윌')
-    # a, *_ = musicInfoRun('사랑비 김태우')
+    a, *_ = musicInfoRun('사랑비 김태우')
     
-    _,_,_,a,*_ = musicInfoRun('러브119 케이윌')
+    # _,_,_,a,*_ = musicInfoRun('러브119 케이윌')
     print(a)
     print(type(a))
 
