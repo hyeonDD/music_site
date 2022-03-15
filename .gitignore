@@ -154,6 +154,9 @@ src/musicsite/music/static/audio
 # venvs
 venvs/
 
+# mac OS DS_Store
+*.DS_Store
+
 # PyCharm
 #  JetBrains specific template is maintainted in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
