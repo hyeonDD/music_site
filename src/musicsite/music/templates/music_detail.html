@@ -2,7 +2,7 @@
 {% block content %}
 <h1>{{ music.title }}</h1>
 <h2>가수: {{music.singer}}</h2> <br>
-<span>앨범: {{ music.album }} | 장르: {{ music.genre }} | 작사,작곡: {{ music.lyricists }} | 발매일: release_date</span>
+<span>앨범: {{ music.album }} | 장르: {{ music.genre }} | 작사,작곡: {{ music.lyricists }} | 발매일: {{ music.release_date }}</span>
 <div>
     <br>가사<br> {{ music.lyrics }}
 </div>
