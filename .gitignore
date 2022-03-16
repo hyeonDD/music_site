@@ -157,6 +157,9 @@ venvs/
 # mac OS DS_Store
 *.DS_Store
 
+# thumbnail image ignore
+src/musicsite/music/static/thumbnail
+
 # PyCharm
 #  JetBrains specific template is maintainted in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
