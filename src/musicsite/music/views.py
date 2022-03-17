@@ -2,7 +2,8 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import MusicForm
 from .models import Music
-from .music_info import MusicInfo, musicInfoRun
+from .music_info import MusicInfo, music_info_run
+from .downloader import downloader_run
 # Create your views here.
 def index(request):
     """
@@ -30,7 +31,9 @@ def register_music(request):
         form = MusicForm(request.POST)
         if form.is_valid():
             #db에 넣기
-            music_title, music_singer, music_album, release_date, music_genre, music_lyrics, music_lyricists_detail = musicInfoRun(form.cleaned_data['title']+form.cleaned_data['singer'])
+            music_title, music_singer, music_album, release_date, music_genre, music_lyrics, music_lyricists_detail = music_info_run(form.cleaned_data['title']+form.cleaned_data['singer'])
+            #음악 다운로드
+            downloader_run(form.cleaned_data['title']+form.cleaned_data['singer'])
             print(form.cleaned_data['title'])
             print(form.cleaned_data['singer'])
             Music.objects.create(title=music_title,\
