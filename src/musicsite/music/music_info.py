@@ -2,8 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 import functools
 import operator
+import os
 
-STATIC_THUMBNAIL_PATH = 'src/musicsite/music/static/thumbnail/'
+STATIC_THUMBNAIL_PATH = f"{os.path.dirname(os.path.realpath(__file__))}/static/thumbnail/"
 
 class MusicInfo:
     def __init__(self, URL='') -> None:
@@ -30,7 +31,7 @@ class MusicInfo:
             img_data = res.content
             file.write(img_data)
 
-def musicInfoRun(search):
+def music_info_run(search):
     get_detail_URL = MusicInfo(f'https://www.melon.com/search/song/index.htm?q={search}') #클래스 이름으로 검색
     tmp = str(get_detail_URL.parsing('.btn_icon_detail')) # str형으로 변환하기위해 잠시저장
     benchmark = tmp.rindex('goSongDetail') # goSongDetail 지점 찾기
@@ -73,4 +74,4 @@ if __name__ == '__main__':
     print(type(a))
 
     # musicInfoRun('러브119 케이윌') """
-    musicInfoRun('러브블러썸 케이윌')
+    music_info_run('러브블러썸 케이윌')
