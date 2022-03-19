@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+<!-- {% load static %} -->
 {% block content %}
 {% if music_list %}
     <!-- <ul>
@@ -7,9 +7,21 @@
             <li><a href="{% url 'music:detail' music.id %}">{{ music.title }}</a></li>
         {% endfor %}
     </ul> -->
-    <div class="list-group">
+    <!-- <div class="list-group">
         {% for music in music_list %}
             <a href="{% url 'music:detail' music.id %}" class="list-group-item list-group-item-action" aria-current="true">{{ music.title }}</a>
+        {% endfor %}
+    </div> -->
+    <div class="card-group" style="width: 60rem;">
+        {% for music in music_list %}
+            <div class="card">
+                <img src="/static/thumbnail/{{ music.title }}.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <audio preload="auto" controls loop="loop">
+                        <source src="http://localhost:8000/static/audio/x2XX3cNW4K0.mp3">                        
+                    </audio>
+                </div>
+            </div>
         {% endfor %}
     </div>
 {% else %}
