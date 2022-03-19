@@ -43,6 +43,7 @@ def download_video_and_subtitle(video_url, file_name):
 def downloader_run(search):
     url = search_url(search)
     download_video_and_subtitle("https://www.youtube.com"+url,url[9:])
+    return url[9:]
 
 if __name__ == '__main__':
 
