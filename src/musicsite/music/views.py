@@ -33,7 +33,7 @@ def register_music(request):
             #db에 넣기
             music_title, music_singer, music_album, release_date, music_genre, music_lyrics, music_lyricists_detail = music_info_run(form.cleaned_data['title']+form.cleaned_data['singer'])
             #음악 다운로드
-            downloader_run(form.cleaned_data['title']+form.cleaned_data['singer'])
+            url = downloader_run(form.cleaned_data['title']+form.cleaned_data['singer'])
             print(form.cleaned_data['title'])
             print(form.cleaned_data['singer'])
             Music.objects.create(title=music_title,\
@@ -43,7 +43,7 @@ def register_music(request):
                                          lyrics=music_lyrics,\
                                          lyricists=music_lyricists_detail,\
                                          release_date=release_date,\
-                                         URL=form.cleaned_data['URL'],
+                                         URL=url,
                                         )
             print("데이터 저장됨")
             return redirect('music:index')
