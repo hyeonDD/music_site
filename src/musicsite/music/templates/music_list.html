@@ -12,13 +12,16 @@
             <a href="{% url 'music:detail' music.id %}" class="list-group-item list-group-item-action" aria-current="true">{{ music.title }}</a>
         {% endfor %}
     </div> -->
-    <div class="card-group" style="width: 60rem;">
+    <!-- style="width: 80rem;" -->
+    <div class="card-group w-80 p-3">
         {% for music in music_list %}
             <div class="card">
                 <img src="/static/thumbnail/{{ music.title }}.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
+                    <h5 class="card-title">{{ music.title }}</h5>
+                    <p class="card-text">{{ music.singer }}</p>
                     <audio preload="auto" controls loop="loop">
-                        <source src="http://localhost:8000/static/audio/x2XX3cNW4K0.mp3">                        
+                        <source src="http://localhost:8000/static/audio/{{ music.URL }}.mp3">                        
                     </audio>
                 </div>
             </div>
