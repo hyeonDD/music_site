@@ -16,9 +16,8 @@ class MusicForm(forms.ModelForm):
         #     'release_date': '발매일',
         #     'URL': 'Youtube URL',
         # }
-        fields = ('title', 'singer', 'URL')        
+        fields = ('title', 'singer')
         labels = {
             'title': '제목',
-            'singer': '가수',            
-            'URL': 'Youtube URL',
+            'singer': '가수',
         }
