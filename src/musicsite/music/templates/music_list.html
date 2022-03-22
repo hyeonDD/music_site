@@ -34,6 +34,7 @@
 <form action="{% url 'music:register_music' %}" method="post">
 {% csrf_token %}
 <!-- <textarea name="content" id="content" rows="15"></textarea> -->
-<input type="submit" value="음악 등록">
+<!-- <input type="submit" value="음악 등록"> -->
+<button class="btn btn-primary" type="submit">음악 등록</button>
 </form>
 {% endblock %}
